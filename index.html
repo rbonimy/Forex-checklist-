@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex Elite — Pre-Trade Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700&display=swap');
+
+:root {
+–dark:    #0d1117;
+–panel:   #161b22;
+–card:    #1c2333;
+–border:  #30363d;
+–gold:    #f0a500;
+–gold2:   #ffd166;
+–green:   #3fb950;
+–red:     #f85149;
+–blue:    #58a6ff;
+–text:    #e6edf3;
+–muted:   #8b949e;
+–input-bg:#0d1117;
+}
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: var(–dark);
+color: var(–text);
+font-family: ‘Exo 2’, sans-serif;
+font-size: 14px;
+line-height: 1.5;
+min-height: 100vh;
+padding: 24px 16px 60px;
+}
+
+.header {
+text-align: center;
+margin-bottom: 28px;
+}
+.header::after {
+content: ‘’;
+display: block;
+width: 120px;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+margin: 12px auto 0;
+}
+.header h1 {
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 28px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–text);
+}
+.header h1 span { color: var(–gold); }
+.header p {
+color: var(–muted);
+font-size: 12px;
+letter-spacing: 1px;
+margin-top: 4px;
+font-style: italic;
+}
+
+.section {
+background: var(–panel);
+border: 1px solid var(–border);
+border-radius: 8px;
+margin-bottom: 16px;
+overflow: hidden;
+}
+.section-header {
+background: var(–card);
+border-bottom: 1px solid var(–border);
+padding: 10px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.section-header h2 {
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+}
+.section-header .badge {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
+color: var(–muted);
+border: 1px solid var(–border);
+padding: 1px 7px;
+border-radius: 20px;
+margin-left: auto;
+}
+
+.grid { display: grid; gap: 1px; background: var(–border); }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.field {
+background: var(–panel);
+padding: 10px 14px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+.field label {
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–muted);
+}
+.field input, .field select, .field textarea {
+background: var(–input-bg);
+border: 1px solid var(–border);
+border-radius: 4px;
+color: var(–text);
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 13px;
+padding: 6px 10px;
+width: 100%;
+transition: border-color 0.2s;
+outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(–gold); }
+.field select option { background: var(–dark); }
+.field textarea { resize: vertical; min-height: 52px; }
+
+.checklist { padding: 0; }
+.check-row {
+display: flex;
+align-items: center;
+gap: 14px;
+padding: 10px 16px;
+border-bottom: 1px solid var(–border);
+transition: background 0.15s;
+cursor: pointer;
+}
+.check-row:last-child { border-bottom: none; }
+.check-row:hover { background: rgba(240,165,0,0.04); }
+.check-row.checked { background: rgba(63,185,80,0.06); }
+
+.check-row input[type=“checkbox”] {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+min-width: 20px;
+border: 2px solid var(–border);
+border-radius: 4px;
+background: var(–input-bg);
+cursor: pointer;
+position: relative;
+transition: all 0.15s;
+}
+.check-row input[type=“checkbox”]:checked {
+background: var(–green);
+border-color: var(–green);
+}
+.check-row input[type=“checkbox”]:checked::after {
+content: ‘✓’;
+position: absolute;
+color: #fff;
+font-size: 13px;
+font-weight: 700;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.check-label { flex: 1; }
+.check-label .main { font-size: 13px; font-weight: 600; color: var(–text); }
+.check-label .note { font-size: 11px; color: var(–muted); margin-top: 1px; font-family: ‘Share Tech Mono’, monospace; }
+.check-num { font-family: ‘Share Tech Mono’, monospace; font-size: 11px; color: var(–border); min-width: 22px; text-align: right; }
+
+/* sub-section divider inside checklist */
+.check-subheader {
+padding: 7px 16px;
+background: var(–card);
+border-bottom: 1px solid var(–border);
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–muted);
+}
+
+.score-bar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 12px 16px;
+background: var(–card);
+border-top: 1px solid var(–border);
+gap: 12px;
+}
+.score-display { font-family: ‘Rajdhani’, sans-serif; font-size: 22px; font-weight: 700; color: var(–gold); }
+.score-display span { font-size: 14px; color: var(–muted); }
+.grade-badge {
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 18px;
+font-weight: 700;
+padding: 4px 16px;
+border-radius: 4px;
+letter-spacing: 2px;
+background: var(–card);
+border: 2px solid var(–border);
+color: var(–muted);
+transition: all 0.3s;
+}
+.grade-badge.aplus  { background: rgba(63,185,80,0.15);  border-color: var(–green); color: var(–green); }
+.grade-badge.a      { background: rgba(88,166,255,0.15); border-color: var(–blue);  color: var(–blue); }
+.grade-badge.bplus  { background: rgba(240,165,0,0.15);  border-color: var(–gold);  color: var(–gold); }
+.grade-badge.notrade{ background: rgba(248,81,73,0.15);  border-color: var(–red);   color: var(–red); }
+.grade-rule { font-size: 11px; color: var(–muted); font-family: ‘Share Tech Mono’, monospace; text-align: right; line-height: 1.6; }
+
+.warning-box {
+background: rgba(248,81,73,0.08);
+border: 1px solid rgba(248,81,73,0.3);
+border-radius: 6px;
+margin: 0 16px 14px;
+padding: 10px 14px;
+font-size: 12px;
+color: #f85149;
+font-family: ‘Share Tech Mono’, monospace;
+display: none;
+}
+.warning-box.visible { display: block; }
+
+.info-box {
+background: rgba(88,166,255,0.06);
+border: 1px solid rgba(88,166,255,0.2);
+border-radius: 6px;
+margin: 12px 16px;
+padding: 10px 14px;
+font-size: 11px;
+color: var(–blue);
+font-family: ‘Share Tech Mono’, monospace;
+line-height: 1.7;
+}
+
+.outcome-row { display: flex; gap: 12px; padding: 14px 16px; align-items: center; }
+.outcome-btn {
+flex: 1;
+padding: 12px;
+border-radius: 6px;
+border: 2px solid var(–border);
+background: var(–input-bg);
+color: var(–muted);
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 16px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.2s;
+}
+.outcome-btn:hover { border-color: var(–muted); }
+.outcome-btn.win.active  { background: rgba(63,185,80,0.2);  border-color: var(–green); color: var(–green); }
+.outcome-btn.loss.active { background: rgba(248,81,73,0.2);  border-color: var(–red);   color: var(–red); }
+.outcome-btn.be.active   { background: rgba(240,165,0,0.2);  border-color: var(–gold);  color: var(–gold); }
+
+.divider { height: 1px; background: var(–border); margin: 0 16px; }
+
+.save-area { text-align: center; margin-top: 24px; }
+.save-btn {
+background: linear-gradient(135deg, var(–gold), #e09000);
+border: none;
+border-radius: 6px;
+color: #000;
+cursor: pointer;
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 3px;
+padding: 14px 48px;
+text-transform: uppercase;
+transition: transform 0.15s, box-shadow 0.15s;
+box-shadow: 0 4px 20px rgba(240,165,0,0.3);
+}
+.save-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(240,165,0,0.45); }
+.save-note { font-size: 11px; color: var(–muted); margin-top: 8px; font-style: italic; }
+
+@media (max-width: 600px) {
+.grid-4 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+.grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ── PRINT / SAVE AS PDF ── */
+@media print {
+@page {
+size: A4;
+margin: 12mm 10mm;
+}
+
+```
+* {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+body {
+  background: #ffffff !important;
+  color: #111111 !important;
+  font-size: 11px !important;
+  padding: 0 !important;
+}
+
+/* Reset CSS variables for print */
+:root {
+  --dark:    #ffffff;
+  --panel:   #f7f7f7;
+  --card:    #eeeeee;
+  --border:  #cccccc;
+  --gold:    #c47f00;
+  --green:   #1a7a32;
+  --red:     #cc2200;
+  --blue:    #1a5fa8;
+  --text:    #111111;
+  --muted:   #555555;
+  --input-bg:#ffffff;
+}
+
+.header h1 { color: #111111 !important; font-size: 20px !important; }
+.header h1 span { color: #c47f00 !important; }
+.header p { color: #555555 !important; }
+.header::after { background: linear-gradient(90deg, transparent, #c47f00, transparent) !important; }
+
+.section {
+  background: #f7f7f7 !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 4px !important;
+  margin-bottom: 8px !important;
+  page-break-inside: avoid;
+}
+
+.section-header {
+  background: #eeeeee !important;
+  border-bottom: 1px solid #cccccc !important;
+}
+.section-header h2 { color: #c47f00 !important; font-size: 11px !important; }
+.section-header .badge { color: #555555 !important; border-color: #cccccc !important; }
+
+.field { background: #f7f7f7 !important; padding: 6px 10px !important; }
+.field label { color: #555555 !important; font-size: 8px !important; }
+.field input, .field select, .field textarea {
+  background: #ffffff !important;
+  border: 1px solid #cccccc !important;
+  color: #111111 !important;
+  font-size: 10px !important;
+  padding: 4px 6px !important;
+}
+
+.check-row {
+  padding: 7px 12px !important;
+  border-bottom: 1px solid #dddddd !important;
+  page-break-inside: avoid;
+}
+.check-row:hover { background: transparent !important; }
+.check-row.checked { background: #eafaed !important; }
+
+.check-row input[type="checkbox"] {
+  border: 2px solid #888888 !important;
+  background: #ffffff !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+}
+.check-row input[type="checkbox"]:checked {
+  background: #1a7a32 !important;
+  border-color: #1a7a32 !important;
+}
+
+.check-label .main { color: #111111 !important; font-size: 11px !important; }
+.check-label .note { color: #555555 !important; font-size: 9px !important; }
+.check-num { color: #aaaaaa !important; }
+
+.check-subheader {
+  background: #eeeeee !important;
+  color: #555555 !important;
+  font-size: 9px !important;
+  padding: 5px 12px !important;
+}
+
+.info-box {
+  background: #e8f0fa !important;
+  border-color: #a0b8d8 !important;
+  color: #1a5fa8 !important;
+  font-size: 9px !important;
+  margin: 6px 12px !important;
+  padding: 6px 10px !important;
+}
+
+.warning-box {
+  background: #faeaea !important;
+  border-color: #e08080 !important;
+  color: #cc2200 !important;
+  font-size: 9px !important;
+}
+
+.score-bar {
+  background: #eeeeee !important;
+  border-top: 1px solid #cccccc !important;
+  padding: 8px 12px !important;
+}
+.score-display { color: #c47f00 !important; font-size: 16px !important; }
+.grade-rule { color: #555555 !important; font-size: 9px !important; }
+.grade-badge { border-color: #cccccc !important; color: #555555 !important; font-size: 13px !important; }
+.grade-badge.aplus  { background: #eafaed !important; border-color: #1a7a32 !important; color: #1a7a32 !important; }
+.grade-badge.a      { background: #e8f0fa !important; border-color: #1a5fa8 !important; color: #1a5fa8 !important; }
+.grade-badge.bplus  { background: #fff8e8 !important; border-color: #c47f00 !important; color: #c47f00 !important; }
+.grade-badge.notrade{ background: #faeaea !important; border-color: #cc2200 !important; color: #cc2200 !important; }
+
+.outcome-row { padding: 8px 12px !important; }
+.outcome-btn {
+  border-color: #cccccc !important;
+  color: #555555 !important;
+  background: #ffffff !important;
+  font-size: 12px !important;
+  padding: 8px !important;
+}
+.outcome-btn.win.active  { background: #eafaed !important; border-color: #1a7a32 !important; color: #1a7a32 !important; }
+.outcome-btn.loss.active { background: #faeaea !important; border-color: #cc2200 !important; color: #cc2200 !important; }
+.outcome-btn.be.active   { background: #fff8e8 !important; border-color: #c47f00 !important; color: #c47f00 !important; }
+
+.save-area { display: none !important; }
+
+/* Force page breaks between major sections */
+.section:nth-child(4) { page-break-before: auto; }
+```
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+  <h1>Forex <span>Elite</span> — Pre-Trade Checklist</h1>
+  <p>Complete every section before entering a trade. No exceptions.</p>
+</div>
+
+<!-- ── TRADE DETAILS ── -->
+
+<div class="section">
+  <div class="section-header">
+    <h2>Trade Details</h2>
+    <span class="badge">STEP 1 OF 5</span>
+  </div>
+  <div class="grid grid-4">
+    <div class="field">
+      <label>Date</label>
+      <input type="date" id="tradeDate">
+    </div>
+    <div class="field">
+      <label>Time</label>
+      <input type="time" id="tradeTime">
+    </div>
+    <div class="field">
+      <label>Pair / Instrument</label>
+      <select id="tradePair">
+        <option value="">Select…</option>
+        <optgroup label="── Forex ──">
+          <option>EURUSD</option>
+          <option>GBPUSD</option>
+          <option>AUDUSD</option>
+          <option>USDCHF</option>
+          <option>USDCAD</option>
+          <option>NZDUSD</option>
+          <option>USDJPY</option>
+          <option>AUDJPY</option>
+        </optgroup>
+        <optgroup label="── Indices ──">
+          <option>US30 (Dow)</option>
+          <option>US100 (Nasdaq)</option>
+        </optgroup>
+        <optgroup label="── Commodities ──">
+          <option>Gold (XAUUSD)</option>
+          <option>WTI Oil</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="field">
+      <label>Direction</label>
+      <select id="tradeDir">
+        <option value="">Select…</option>
+        <option>LONG</option>
+        <option>SHORT</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid grid-4">
+    <div class="field">
+      <label>Session</label>
+      <select id="tradeSession">
+        <option value="">Select…</option>
+        <option>Primary (10am–12pm)</option>
+        <option>Selective (12pm–2pm)</option>
+        <option>Asian (8pm–11pm)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Account</label>
+      <select id="tradeAccount">
+        <option value="">Select…</option>
+        <option>$10K Funded</option>
+        <option>$100K Challenge</option>
+        <option>$200K Challenge</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Setup Type</label>
+      <select id="setupType">
+        <option value="">Select…</option>
+        <option>PDH Sweep → Short</option>
+        <option>PDL Sweep → Long</option>
+        <option>BOS Break &amp; Hold</option>
+        <option>Consol Sweep</option>
+        <option>B+ MA Bounce</option>
+        <option>BOS/ChoCh Retest</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>15m Trend</label>
+      <select id="trend15">
+        <option value="">Select…</option>
+        <option>Bullish (HH/HL)</option>
+        <option>Bearish (LH/LL)</option>
+        <option>Choppy / No trend</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid grid-4">
+    <div class="field">
+      <label>Entry Price</label>
+      <input type="text" id="entryPrice" placeholder="0.00000">
+    </div>
+    <div class="field">
+      <label>Stop Loss</label>
+      <input type="text" id="stopLoss" placeholder="0.00000">
+    </div>
+    <div class="field">
+      <label>TP1 (50% range)</label>
+      <input type="text" id="tp1" placeholder="0.00000">
+    </div>
+    <div class="field">
+      <label>TP2 / TP3 (1.618)</label>
+      <input type="text" id="tp2" placeholder="0.00000 / 0.00000">
+    </div>
+  </div>
+  <div class="grid grid-4">
+    <div class="field">
+      <label>Risk $</label>
+      <input type="text" id="riskDollar" placeholder="$">
+    </div>
+    <div class="field">
+      <label>Risk %</label>
+      <input type="text" id="riskPct" placeholder="1.49%">
+    </div>
+    <div class="field">
+      <label>R:R Ratio</label>
+      <input type="text" id="rrRatio" placeholder="Target 4:1">
+    </div>
+    <div class="field">
+      <label>Lot Size</label>
+      <input type="text" id="lotSize" placeholder="Lots">
+    </div>
+  </div>
+</div>
+
+<!-- ── CONFLUENCE SCORECARD ── -->
+
+<div class="section">
+  <div class="section-header">
+    <h2>Confluence Scorecard</h2>
+    <span class="badge">STEP 2 OF 5</span>
+  </div>
+  <div class="checklist" id="confluenceList">
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">PDH / PDL Sweep</div>
+        <div class="note">Wick beyond level → body closes back inside</div>
+      </div>
+      <span class="check-num">01</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">Supply / Demand Zone</div>
+        <div class="note">Price at institutional S/D zone — 1st or 2nd test only</div>
+      </div>
+      <span class="check-num">02</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">Channel Wall Confluence</div>
+        <div class="note">Price touching channel boundary</div>
+      </div>
+      <span class="check-num">03</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">Fibonacci Level</div>
+        <div class="note">0.618 / 0.786 / 0.50 confluence at entry zone</div>
+      </div>
+      <span class="check-num">04</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">MFI Extreme at Sweep</div>
+        <div class="note">&gt;75 for short  |  &lt;25 for long — must be AT sweep point</div>
+      </div>
+      <span class="check-num">05</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">OBV Converging with Price</div>
+        <div class="note">OBV confirms direction — divergence warns of fake move / reversal</div>
+      </div>
+      <span class="check-num">06</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">ROC Confirmation on 15m</div>
+        <div class="note">ROC slope turning in trade direction — not choppy/flat</div>
+      </div>
+      <span class="check-num">07</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">Session Timing</div>
+        <div class="note">Primary 10–12  |  Selective 12–2 (A+ only)  |  Asian 8–11pm</div>
+      </div>
+      <span class="check-num">08</span>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">15m Trend Aligned</div>
+        <div class="note">Trading WITH 15m structure — counter-trend = B+ max only</div>
+      </div>
+      <span class="check-num">09</span>
+    </div>
+  </div>
+
+  <div class="warning-box" id="counterTrendWarning">
+    ⚠ COUNTER-TREND DETECTED — Maximum grade is B+ regardless of confluence count. Only valid if divergence has been building 2+ hours on 15m. Target 50% range only. Exit immediately if 15m closes new LL/HH against position.
+  </div>
+
+  <div class="score-bar">
+    <div>
+      <div class="score-display"><span>SCORE </span><span id="scoreNum">0</span><span> / 9</span></div>
+    </div>
+    <div class="grade-rule">
+      5+ = A+ Full size &nbsp;|&nbsp; 4 = A Standard<br>
+      3 = B+ Half size &nbsp;|&nbsp; &lt;3 = NO TRADE
+    </div>
+    <div class="grade-badge" id="gradeBadge">—</div>
+  </div>
+</div>
+
+<!-- ── ENTRY SEQUENCE ── -->
+
+<div class="section">
+  <div class="section-header">
+    <h2>Entry Sequence</h2>
+    <span class="badge">STEP 3 OF 5</span>
+  </div>
+  <div class="checklist">
+
+```
+<div class="check-subheader">▸ Market Structure</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Daily: PDH &amp; PDL marked on chart</div>
+    <div class="note">Levels drawn before session begins</div>
+  </div>
+  <span class="check-num">01</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">15m: Trend direction confirmed</div>
+    <div class="note">HH/HL = Bullish  |  LH/LL = Bearish</div>
+  </div>
+  <span class="check-num">02</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Consolidation identified and marked (if present)</div>
+    <div class="note">Mark consolidation range top and bottom — watch for sweep of edges</div>
+  </div>
+  <span class="check-num">03</span>
+</div>
+
+<div class="check-subheader">▸ Sweep Confirmation</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Price sweeps PDH, PDL or consolidation edge</div>
+    <div class="note">Wick pushes through — body closes back inside level</div>
+  </div>
+  <span class="check-num">04</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">MFI at extreme on 15m at sweep point</div>
+    <div class="note">&gt;75 for short  |  &lt;25 for long — ignore mid-range 40–60 readings</div>
+  </div>
+  <span class="check-num">05</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">OBV converging with intended trade direction</div>
+    <div class="note">OBV confirms move is real — OBV diverging = fake move / reversal signal</div>
+  </div>
+  <span class="check-num">06</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">ROC turning on 15m in trade direction</div>
+    <div class="note">Slope shift is real — avoid entries when ROC is choppy or flat</div>
+  </div>
+  <span class="check-num">07</span>
+</div>
+
+<div class="check-subheader">▸ Entry Trigger</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">5m confirmation at PDH/PDL (if needed)</div>
+    <div class="note">Intermediate timeframe confirmation before dropping to 2m</div>
+  </div>
+  <span class="check-num">08</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">2m ChoCh confirmed — BODY close required</div>
+    <div class="note">Wick alone = invalid. No ChoCh = NO TRADE. This is the trigger.</div>
+  </div>
+  <span class="check-num">09</span>
+</div>
+
+<div class="check-subheader">▸ BOS / ChoCh Retest (if applicable)</div>
+
+<div class="info-box">
+  💡 After BOS or ChoCh, price often pulls back to retest the broken level before continuation. This retest offers a tighter stop and better R:R than chasing the initial breakout. Wait for the retest — do not chase.
+</div>
+
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Price has pulled back to BOS / ChoCh level</div>
+    <div class="note">Broken resistance now acting as support (or vice versa)</div>
+  </div>
+  <span class="check-num">10</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Retest candle shows clean rejection from level</div>
+    <div class="note">Wick into level with body closing away — NOT closing back below/above BOS</div>
+  </div>
+  <span class="check-num">11</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Retest volume lower than initial breakout move</div>
+    <div class="note">Low volume retest = weak counter-pressure = continuation likely</div>
+  </div>
+  <span class="check-num">12</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">2m ChoCh confirms continuation after retest</div>
+    <div class="note">Failed retest (closes back through level) = EXIT signal not entry</div>
+  </div>
+  <span class="check-num">13</span>
+</div>
+
+<div class="check-subheader">▸ Risk</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">SL placed beyond sweep wick + spread buffer</div>
+    <div class="note">NOT just the PDH/PDL level itself — beyond the full wick</div>
+  </div>
+  <span class="check-num">14</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Min R:R of 1:2 confirmed before entry</div>
+    <div class="note">Target 4:1 — calculate NET R:R after commission</div>
+  </div>
+  <span class="check-num">15</span>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ── PSYCHOLOGY CHECK ── -->
+
+<div class="section">
+  <div class="section-header">
+    <h2>Psychology Check</h2>
+    <span class="badge">STEP 4 OF 5</span>
+  </div>
+  <div class="checklist">
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">I am trading WITH the 15m trend</div>
+        <div class="note">Counter-trend = B+ max only, requires 2+ hours divergence building</div>
+      </div>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">I am within my allowed session window</div>
+        <div class="note">Primary 10–12  |  Selective A+ only 12–2  |  Hard cut-off 3pm SHARP</div>
+      </div>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">I have NOT had 2 losses today already</div>
+        <div class="note">2-loss rule — if 2 losses hit, platform closes. No third trade. Ever.</div>
+      </div>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">I am NOT forcing this trade</div>
+        <div class="note">No frustration, boredom, or FOMO driving this entry</div>
+      </div>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">I waited for ChoCh — not just the sweep or BOS alone</div>
+        <div class="note">The sweep alone is never enough to enter</div>
+      </div>
+    </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox">
+      <div class="check-label">
+        <div class="main">This is genuinely A+ — I have not lowered my standards</div>
+        <div class="note">Boredom is not a reason to enter. Quality always beats quantity.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TRADE OUTCOME ── -->
+
+<div class="section">
+  <div class="section-header">
+    <h2>Trade Outcome</h2>
+    <span class="badge">STEP 5 OF 5</span>
+  </div>
+  <div class="outcome-row">
+    <button class="outcome-btn win" onclick="setOutcome('win', this)">✓ WIN</button>
+    <button class="outcome-btn loss" onclick="setOutcome('loss', this)">✗ LOSS</button>
+    <button class="outcome-btn be" onclick="setOutcome('be', this)">~ BREAKEVEN</button>
+  </div>
+  <div class="divider"></div>
+  <div class="grid grid-4">
+    <div class="field">
+      <label>Actual R:R Achieved</label>
+      <input type="text" id="actualRR" placeholder="e.g. 3.2R">
+    </div>
+    <div class="field">
+      <label>P&amp;L $</label>
+      <input type="text" id="pnl" placeholder="$ +/-">
+    </div>
+    <div class="field">
+      <label>Exit Time</label>
+      <input type="time" id="exitTime">
+    </div>
+    <div class="field">
+      <label>Final Setup Grade</label>
+      <select id="finalGrade">
+        <option value="">Select…</option>
+        <option>A+</option>
+        <option>A</option>
+        <option>B+</option>
+        <option>Phantom (not taken)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div class="field">
+      <label>What I Did Well</label>
+      <textarea id="didWell" placeholder="e.g. Waited for retest, respected SL throughout…"></textarea>
+    </div>
+    <div class="field">
+      <label>What Cost Me / Would Change</label>
+      <textarea id="costMe" placeholder="e.g. Entered on initial BOS instead of waiting for retest…"></textarea>
+    </div>
+  </div>
+  <div class="field" style="padding:10px 14px 14px;">
+    <label>One Improvement For Next Trade</label>
+    <input type="text" id="improvement" placeholder="e.g. Wait for retest of BOS before triggering entry">
+  </div>
+</div>
+
+<!-- ── SAVE ── -->
+
+<div class="save-area">
+  <button class="save-btn" onclick="saveChecklist()">Save Checklist</button>
+  <p class="save-note">Auto-named: DATE_PAIR_OUTCOME.html — save to your Trade Journal folder</p>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    const now = new Date();
+    document.getElementById('tradeDate').value = now.toISOString().split('T')[0];
+    document.getElementById('tradeTime').value = now.toTimeString().slice(0,5);
+  });
+
+  function toggleCheck(row) {
+    if (event.target.tagName === 'INPUT') return;
+    const cb = row.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    row.classList.toggle('checked', cb.checked);
+    updateScore();
+  }
+
+  document.querySelectorAll('.check-row input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+      this.closest('.check-row').classList.toggle('checked', this.checked);
+      updateScore();
+    });
+  });
+
+  function updateScore() {
+    const checks = document.querySelectorAll('.conf-check');
+    let score = 0;
+    checks.forEach(c => { if (c.checked) score++; });
+    document.getElementById('scoreNum').textContent = score;
+
+    const trendCheck = document.querySelectorAll('.conf-check')[8];
+    const isCounterTrend = !trendCheck.checked;
+    document.getElementById('counterTrendWarning').classList.toggle('visible', isCounterTrend && score > 0);
+
+    const badge = document.getElementById('gradeBadge');
+    badge.className = 'grade-badge';
+    if (score >= 5 && !isCounterTrend) {
+      badge.textContent = 'A+'; badge.classList.add('aplus');
+    } else if (score === 4 && !isCounterTrend) {
+      badge.textContent = 'A'; badge.classList.add('a');
+    } else if (score === 3 || (score >= 3 && isCounterTrend)) {
+      badge.textContent = 'B+'; badge.classList.add('bplus');
+    } else if (score < 3 && score > 0) {
+      badge.textContent = 'NO TRADE'; badge.classList.add('notrade');
+    } else {
+      badge.textContent = '—';
+    }
+  }
+
+  let currentOutcome = '';
+  function setOutcome(type, btn) {
+    document.querySelectorAll('.outcome-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentOutcome = type;
+  }
+
+  function saveChecklist() {
+    const date = document.getElementById('tradeDate').value || 'unknown-date';
+    const pair = (document.getElementById('tradePair').value || 'PAIR').replace(/[^a-zA-Z0-9]/g, '');
+    const outcome = currentOutcome ? currentOutcome.toUpperCase() : 'PENDING';
+    const filename = `${date}_${pair}_${outcome}.html`;
+
+    try {
+      // data URI method — bypasses Chrome local file Blob security block
+      const content = document.documentElement.outerHTML;
+      const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(content);
+      const a = document.createElement('a');
+      a.href = dataUri;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch(e) {
+      // Fallback — open in new tab, user saves with Ctrl+S
+      const content = document.documentElement.outerHTML;
+      const win = window.open('', '_blank');
+      win.document.write(content);
+      win.document.close();
+      alert('Press Ctrl+S in the new tab to save the file as:\n' + filename);
+    }
+  }
+</script>
+
+</body>
+</html>

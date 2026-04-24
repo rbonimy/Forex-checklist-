@@ -993,30 +993,103 @@ body {
     currentOutcome = type;
   }
 
+  function serializeFormState() {
+    // Bake all current input values and checkbox states directly into the HTML
+    // so the saved file reopens exactly as filled in
+
+    const clone = document.documentElement.cloneNode(true);
+
+    // Text inputs, selects, textareas
+    const liveInputs = document.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], select, textarea');
+    const cloneInputs = clone.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], select, textarea');
+    liveInputs.forEach((el, i) => {
+      if (el.tagName === 'SELECT') {
+        cloneInputs[i].value = el.value;
+        // Also set selected attribute on the right option
+        Array.from(cloneInputs[i].options).forEach(opt => {
+          opt.removeAttribute('selected');
+          if (opt.value === el.value) opt.setAttribute('selected', 'selected');
+        });
+      } else if (el.tagName === 'TEXTAREA') {
+        cloneInputs[i].textContent = el.value;
+        cloneInputs[i].setAttribute('data-value', el.value);
+      } else {
+        cloneInputs[i].setAttribute('value', el.value);
+      }
+    });
+
+    // Checkboxes — set checked attribute and checked class on parent row
+    const liveCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+    const cloneCheckboxes = clone.querySelectorAll('input[type="checkbox"]');
+    liveCheckboxes.forEach((el, i) => {
+      if (el.checked) {
+        cloneCheckboxes[i].setAttribute('checked', 'checked');
+        const row = cloneCheckboxes[i].closest('.check-row');
+        if (row) row.classList.add('checked');
+      } else {
+        cloneCheckboxes[i].removeAttribute('checked');
+      }
+    });
+
+    // Outcome buttons — preserve active state
+    const liveOutcomeBtns = document.querySelectorAll('.outcome-btn');
+    const cloneOutcomeBtns = clone.querySelectorAll('.outcome-btn');
+    liveOutcomeBtns.forEach((el, i) => {
+      if (el.classList.contains('active')) {
+        cloneOutcomeBtns[i].classList.add('active');
+      }
+    });
+
+    // Grade badge — preserve computed grade
+    const liveBadge = document.getElementById('gradeBadge');
+    const cloneBadge = clone.getElementById('gradeBadge');
+    if (liveBadge && cloneBadge) {
+      cloneBadge.className = liveBadge.className;
+      cloneBadge.textContent = liveBadge.textContent;
+    }
+
+    // Score number
+    const liveScore = document.getElementById('scoreNum');
+    const cloneScore = clone.getElementById('scoreNum');
+    if (liveScore && cloneScore) cloneScore.textContent = liveScore.textContent;
+
+    // Counter trend warning visibility
+    const liveWarning = document.getElementById('counterTrendWarning');
+    const cloneWarning = clone.getElementById('counterTrendWarning');
+    if (liveWarning && cloneWarning) {
+      if (liveWarning.classList.contains('visible')) cloneWarning.classList.add('visible');
+    }
+
+    // Inject a restore script so textareas repopulate on reopen
+    const restoreScript = clone.createElement ? null : null;
+    // Patch textareas via inline onload
+    const scriptTag = clone.createElement('script');
+    scriptTag.textContent = `
+      window.addEventListener('load', function() {
+        document.querySelectorAll('textarea[data-value]').forEach(function(ta) {
+          ta.value = ta.getAttribute('data-value');
+        });
+      });
+    `;
+    clone.querySelector('body').appendChild(scriptTag);
+
+    return clone.outerHTML;
+  }
+
   function saveChecklist() {
     const date = document.getElementById('tradeDate').value || 'unknown-date';
     const pair = (document.getElementById('tradePair').value || 'PAIR').replace(/[^a-zA-Z0-9]/g, '');
     const outcome = currentOutcome ? currentOutcome.toUpperCase() : 'PENDING';
     const filename = `${date}_${pair}_${outcome}.html`;
 
-    try {
-      // data URI method — bypasses Chrome local file Blob security block
-      const content = document.documentElement.outerHTML;
-      const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(content);
-      const a = document.createElement('a');
-      a.href = dataUri;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    } catch(e) {
-      // Fallback — open in new tab, user saves with Ctrl+S
-      const content = document.documentElement.outerHTML;
-      const win = window.open('', '_blank');
-      win.document.write(content);
-      win.document.close();
-      alert('Press Ctrl+S in the new tab to save the file as:\n' + filename);
-    }
+    const serialized = serializeFormState();
+    const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(serialized);
+    const a = document.createElement('a');
+    a.href = dataUri;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 </script>
 

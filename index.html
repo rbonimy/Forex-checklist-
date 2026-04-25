@@ -935,15 +935,92 @@ body {
 <!-- ── SAVE ── -->
 
 <div class="save-area">
-  <button class="save-btn" onclick="saveChecklist()">Save Checklist</button>
-  <p class="save-note">Auto-named: DATE_PAIR_OUTCOME.html — save to your Trade Journal folder</p>
+  <button class="save-btn" onclick="printChecklist()">&#128196; Save as PDF</button>
+  <p class="save-note">Opens print dialog — select "Save as PDF" — name it DATE_PAIR_OUTCOME</p>
+  <button onclick="clearState()" style="margin-top:12px; background:transparent; border:1px solid #30363d; color:#8b949e; font-family:'Rajdhani',sans-serif; font-size:13px; padding:8px 24px; border-radius:6px; cursor:pointer; letter-spacing:2px;">&#43; NEW CHECKLIST</button>
+  <p class="save-note" style="margin-top:6px; color:#3fb950;">&#10003; Your data auto-saves in this browser as you type — it will still be here if you close and reopen this page</p>
 </div>
 
 <script>
+  // ── AUTO-SAVE TO LOCALSTORAGE ──
+  const SAVE_KEY = 'forex_checklist_state';
+
+  function saveState() {
+    const state = {};
+    document.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], textarea').forEach(el => {
+      if (el.id) state[el.id] = el.value;
+    });
+    document.querySelectorAll('select').forEach(el => {
+      if (el.id) state[el.id] = el.value;
+    });
+    document.querySelectorAll('input[type="checkbox"]').forEach((el, i) => {
+      state['cb_' + i] = el.checked;
+    });
+    state['outcome'] = currentOutcome;
+    state['grade'] = document.getElementById('gradeBadge').className;
+    state['gradeText'] = document.getElementById('gradeBadge').textContent;
+    state['score'] = document.getElementById('scoreNum').textContent;
+    localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  }
+
+  function loadState() {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    try {
+      const state = JSON.parse(raw);
+      Object.keys(state).forEach(key => {
+        if (key.startsWith('cb_')) {
+          const idx = parseInt(key.replace('cb_', ''));
+          const cbs = document.querySelectorAll('input[type="checkbox"]');
+          if (cbs[idx]) {
+            cbs[idx].checked = state[key];
+            cbs[idx].closest('.check-row').classList.toggle('checked', state[key]);
+          }
+        } else if (key === 'outcome') {
+          if (state[key]) {
+            currentOutcome = state[key];
+            document.querySelectorAll('.outcome-btn').forEach(btn => {
+              btn.classList.toggle('active', btn.classList.contains(state[key].toLowerCase()));
+            });
+          }
+        } else if (key === 'grade') {
+          document.getElementById('gradeBadge').className = state[key];
+          document.getElementById('gradeBadge').textContent = state['gradeText'] || '';
+        } else if (key === 'score') {
+          document.getElementById('scoreNum').textContent = state[key];
+        } else {
+          const el = document.getElementById(key);
+          if (el) el.value = state[key];
+        }
+      });
+      return true;
+    } catch(e) { return false; }
+  }
+
+  function clearState() {
+    if (confirm('Clear all fields and start a new checklist?')) {
+      localStorage.removeItem(SAVE_KEY);
+      location.reload();
+    }
+  }
+
+  function printChecklist() {
+    window.print();
+  }
+
+  // Auto-save on any change
+  document.addEventListener('change', saveState);
+  document.addEventListener('input', saveState);
+
   window.addEventListener('load', () => {
-    const now = new Date();
-    document.getElementById('tradeDate').value = now.toISOString().split('T')[0];
-    document.getElementById('tradeTime').value = now.toTimeString().slice(0,5);
+    const loaded = loadState();
+    if (!loaded) {
+      // Fresh checklist — set today's date and time
+      const now = new Date();
+      document.getElementById('tradeDate').value = now.toISOString().split('T')[0];
+      document.getElementById('tradeTime').value = now.toTimeString().slice(0,5);
+    }
+    updateScore();
   });
 
   function toggleCheck(row) {
@@ -999,31 +1076,24 @@ body {
     const outcome = currentOutcome ? currentOutcome.toUpperCase() : 'PENDING';
     const filename = `${date}_${pair}_${outcome}.html`;
 
-    // Step 1: bake all input values into attributes so they survive in saved HTML
-    document.querySelectorAll('input[type="text"], input[type="date"], input[type="time"]').forEach(function(el) {
-      el.setAttribute('value', el.value);
-    });
-    document.querySelectorAll('textarea').forEach(function(el) {
-      el.innerHTML = el.value;
-    });
-    document.querySelectorAll('select').forEach(function(el) {
-      Array.from(el.options).forEach(function(opt) { opt.removeAttribute('selected'); });
-      if (el.selectedIndex >= 0) el.options[el.selectedIndex].setAttribute('selected', 'selected');
-    });
-    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
-      if (el.checked) { el.setAttribute('checked', 'checked'); }
-      else { el.removeAttribute('checked'); }
-    });
-
-    // Step 2: save as data URI
-    const html = document.documentElement.outerHTML;
-    const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
-    const a = document.createElement('a');
-    a.href = dataUri;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    try {
+      // data URI method — bypasses Chrome local file Blob security block
+      const content = document.documentElement.outerHTML;
+      const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(content);
+      const a = document.createElement('a');
+      a.href = dataUri;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch(e) {
+      // Fallback — open in new tab, user saves with Ctrl+S
+      const content = document.documentElement.outerHTML;
+      const win = window.open('', '_blank');
+      win.document.write(content);
+      win.document.close();
+      alert('Press Ctrl+S in the new tab to save the file as:\n' + filename);
+    }
   }
 </script>
 

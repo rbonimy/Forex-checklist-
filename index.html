@@ -529,6 +529,16 @@ body {
         <option>Consol Sweep</option>
         <option>B+ MA Bounce</option>
         <option>BOS/ChoCh Retest</option>
+        <option>BOS Failure / Liquidity Sweep</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>4H Trend (HTF)</label>
+      <select id="trend4h">
+        <option value="">Select…</option>
+        <option>Bullish (HH/HL)</option>
+        <option>Bearish (LH/LL)</option>
+        <option>Consolidating</option>
       </select>
     </div>
     <div class="field">
@@ -601,7 +611,7 @@ body {
         <div class="main">Supply / Demand Zone</div>
         <div class="note">Price at institutional S/D zone — 1st or 2nd test only</div>
       </div>
-      <span class="check-num">02</span>
+      <span class="check-num">22</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -609,7 +619,7 @@ body {
         <div class="main">Channel Wall Confluence</div>
         <div class="note">Price touching channel boundary</div>
       </div>
-      <span class="check-num">03</span>
+      <span class="check-num">23</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -617,7 +627,7 @@ body {
         <div class="main">Fibonacci Level</div>
         <div class="note">0.618 / 0.786 / 0.50 confluence at entry zone</div>
       </div>
-      <span class="check-num">04</span>
+      <span class="check-num">22</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -625,7 +635,7 @@ body {
         <div class="main">MFI Extreme at Sweep</div>
         <div class="note">&gt;75 for short  |  &lt;25 for long — must be AT sweep point</div>
       </div>
-      <span class="check-num">05</span>
+      <span class="check-num">23</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -633,7 +643,7 @@ body {
         <div class="main">OBV Converging with Price</div>
         <div class="note">OBV confirms direction — divergence warns of fake move / reversal</div>
       </div>
-      <span class="check-num">06</span>
+      <span class="check-num">22</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -641,7 +651,7 @@ body {
         <div class="main">ROC Confirmation on 15m</div>
         <div class="note">ROC slope turning in trade direction — not choppy/flat</div>
       </div>
-      <span class="check-num">07</span>
+      <span class="check-num">23</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -649,7 +659,7 @@ body {
         <div class="main">Session Timing</div>
         <div class="note">Primary 10–12  |  Selective 12–2 (A+ only)  |  Asian 8–11pm</div>
       </div>
-      <span class="check-num">08</span>
+      <span class="check-num">22</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -659,6 +669,14 @@ body {
       </div>
       <span class="check-num">09</span>
     </div>
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">4H Trend Aligned (HTF Confirmation)</div>
+        <div class="note">Daily + 4H + 15m all agreeing = maximum conviction A+ setup</div>
+      </div>
+      <span class="check-num">10</span>
+    </div>
   </div>
 
   <div class="warning-box" id="counterTrendWarning">
@@ -667,11 +685,11 @@ body {
 
   <div class="score-bar">
     <div>
-      <div class="score-display"><span>SCORE </span><span id="scoreNum">0</span><span> / 9</span></div>
+      <div class="score-display"><span>SCORE </span><span id="scoreNum">0</span><span> / 10</span></div>
     </div>
     <div class="grade-rule">
-      5+ = A+ Full size &nbsp;|&nbsp; 4 = A Standard<br>
-      3 = B+ Half size &nbsp;|&nbsp; &lt;3 = NO TRADE
+      6+ = A+ Full size &nbsp;|&nbsp; 5 = A Standard<br>
+      4 = B+ Half size &nbsp;|&nbsp; &lt;4 = NO TRADE
     </div>
     <div class="grade-badge" id="gradeBadge">—</div>
   </div>
@@ -687,6 +705,24 @@ body {
   <div class="checklist">
 
 ```
+<div class="check-subheader">▸ Higher Timeframe Confirmation</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">4H trend checked and recorded</div>
+    <div class="note">4H with trade = full grade  |  4H consolidating = reduce one grade  |  4H against = B+ max</div>
+  </div>
+  <span class="check-num">01</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Daily, 4H and 15m all aligned in same direction</div>
+    <div class="note">All three agreeing = highest conviction  |  Any conflict = reduce grade accordingly</div>
+  </div>
+  <span class="check-num">22</span>
+</div>
+
 <div class="check-subheader">▸ Market Structure</div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -694,7 +730,7 @@ body {
     <div class="main">Daily: PDH &amp; PDL marked on chart</div>
     <div class="note">Levels drawn before session begins</div>
   </div>
-  <span class="check-num">01</span>
+  <span class="check-num">23</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -702,7 +738,7 @@ body {
     <div class="main">15m: Trend direction confirmed</div>
     <div class="note">HH/HL = Bullish  |  LH/LL = Bearish</div>
   </div>
-  <span class="check-num">02</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -710,7 +746,7 @@ body {
     <div class="main">Consolidation identified and marked (if present)</div>
     <div class="note">Mark consolidation range top and bottom — watch for sweep of edges</div>
   </div>
-  <span class="check-num">03</span>
+  <span class="check-num">23</span>
 </div>
 
 <div class="check-subheader">▸ Sweep Confirmation</div>
@@ -720,7 +756,7 @@ body {
     <div class="main">Price sweeps PDH, PDL or consolidation edge</div>
     <div class="note">Wick pushes through — body closes back inside level</div>
   </div>
-  <span class="check-num">04</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -728,7 +764,7 @@ body {
     <div class="main">MFI at extreme on 15m at sweep point</div>
     <div class="note">&gt;75 for short  |  &lt;25 for long — ignore mid-range 40–60 readings</div>
   </div>
-  <span class="check-num">05</span>
+  <span class="check-num">23</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -736,7 +772,7 @@ body {
     <div class="main">OBV converging with intended trade direction</div>
     <div class="note">OBV confirms move is real — OBV diverging = fake move / reversal signal</div>
   </div>
-  <span class="check-num">06</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -744,7 +780,7 @@ body {
     <div class="main">ROC turning on 15m in trade direction</div>
     <div class="note">Slope shift is real — avoid entries when ROC is choppy or flat</div>
   </div>
-  <span class="check-num">07</span>
+  <span class="check-num">23</span>
 </div>
 
 <div class="check-subheader">▸ Entry Trigger</div>
@@ -754,7 +790,7 @@ body {
     <div class="main">5m confirmation at PDH/PDL (if needed)</div>
     <div class="note">Intermediate timeframe confirmation before dropping to 2m</div>
   </div>
-  <span class="check-num">08</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -762,7 +798,7 @@ body {
     <div class="main">2m ChoCh confirmed — BODY close required</div>
     <div class="note">Wick alone = invalid. No ChoCh = NO TRADE. This is the trigger.</div>
   </div>
-  <span class="check-num">09</span>
+  <span class="check-num">23</span>
 </div>
 
 <div class="check-subheader">▸ BOS / ChoCh Retest (if applicable)</div>
@@ -777,7 +813,7 @@ body {
     <div class="main">Price has pulled back to BOS / ChoCh level</div>
     <div class="note">Broken resistance now acting as support (or vice versa)</div>
   </div>
-  <span class="check-num">10</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -785,7 +821,7 @@ body {
     <div class="main">Retest candle shows clean rejection from level</div>
     <div class="note">Wick into level with body closing away — NOT closing back below/above BOS</div>
   </div>
-  <span class="check-num">11</span>
+  <span class="check-num">23</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -793,7 +829,7 @@ body {
     <div class="main">Retest volume lower than initial breakout move</div>
     <div class="note">Low volume retest = weak counter-pressure = continuation likely</div>
   </div>
-  <span class="check-num">12</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -801,7 +837,62 @@ body {
     <div class="main">2m ChoCh confirms continuation after retest</div>
     <div class="note">Failed retest (closes back through level) = EXIT signal not entry</div>
   </div>
-  <span class="check-num">13</span>
+  <span class="check-num">23</span>
+</div>
+
+<div class="check-subheader">▸ BOS Failure / Liquidity Sweep (if applicable)</div>
+
+<div class="info-box">
+  💡 Price wicks below BOS triggering stop losses, then snaps back above. Institutions grab liquidity at the sweep low before reversing. Same mechanic as PDH/PDL sweep — just at BOS level. Body must close back above BOS for valid entry.
+</div>
+
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Wick breaks below BOS — body closes back ABOVE</div>
+    <div class="note">Body closing below = real breakdown. Body closing back above = liquidity sweep.</div>
+  </div>
+  <span class="check-num">22</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">MFI at oversold extreme at the sweep wick low</div>
+    <div class="note">&lt;25 confirms exhaustion — smart money absorbing sell pressure</div>
+  </div>
+  <span class="check-num">23</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">OBV not confirming the break — flat or rising during wick</div>
+    <div class="note">OBV dropping with price = real selling. OBV flat/rising = fake break confirmed</div>
+  </div>
+  <span class="check-num">22</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">ROC briefly negative then quickly reverses upward</div>
+    <div class="note">Fast ROC reversal = momentum snap back. Sustained negative = real breakdown</div>
+  </div>
+  <span class="check-num">23</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">Reversal happens within 1–3 candles of the sweep</div>
+    <div class="note">Fast snap back = stop hunt confirmed. Slow drift = breakdown more likely</div>
+  </div>
+  <span class="check-num">22</span>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">2m ChoCh bullish after body closes back above BOS</div>
+    <div class="note">SL goes below the sweep wick — not just the BOS level</div>
+  </div>
+  <span class="check-num">23</span>
 </div>
 
 <div class="check-subheader">▸ Risk</div>
@@ -811,7 +902,7 @@ body {
     <div class="main">SL placed beyond sweep wick + spread buffer</div>
     <div class="note">NOT just the PDH/PDL level itself — beyond the full wick</div>
   </div>
-  <span class="check-num">14</span>
+  <span class="check-num">22</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -819,7 +910,7 @@ body {
     <div class="main">Min R:R of 1:2 confirmed before entry</div>
     <div class="note">Target 4:1 — calculate NET R:R after commission</div>
   </div>
-  <span class="check-num">15</span>
+  <span class="check-num">23</span>
 </div>
 ```
 
@@ -1044,19 +1135,19 @@ body {
     checks.forEach(c => { if (c.checked) score++; });
     document.getElementById('scoreNum').textContent = score;
 
-    const trendCheck = document.querySelectorAll('.conf-check')[8];
+    const trendCheck = document.querySelectorAll('.conf-check')[8]; // 15m trend still index 8
     const isCounterTrend = !trendCheck.checked;
     document.getElementById('counterTrendWarning').classList.toggle('visible', isCounterTrend && score > 0);
 
     const badge = document.getElementById('gradeBadge');
     badge.className = 'grade-badge';
-    if (score >= 5 && !isCounterTrend) {
+    if (score >= 6 && !isCounterTrend) {
       badge.textContent = 'A+'; badge.classList.add('aplus');
-    } else if (score === 4 && !isCounterTrend) {
+    } else if (score === 5 && !isCounterTrend) {
       badge.textContent = 'A'; badge.classList.add('a');
-    } else if (score === 3 || (score >= 3 && isCounterTrend)) {
+    } else if (score === 4 || (score >= 4 && isCounterTrend)) {
       badge.textContent = 'B+'; badge.classList.add('bplus');
-    } else if (score < 3 && score > 0) {
+    } else if (score < 4 && score > 0) {
       badge.textContent = 'NO TRADE'; badge.classList.add('notrade');
     } else {
       badge.textContent = '—';

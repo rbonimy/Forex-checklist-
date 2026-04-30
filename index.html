@@ -303,33 +303,32 @@ size: A4;
 margin: 12mm 10mm;
 }
 
-```
-* {
+- {
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
   color-adjust: exact !important;
-}
+  }
 
 body {
-  background: #ffffff !important;
-  color: #111111 !important;
-  font-size: 11px !important;
-  padding: 0 !important;
+background: #ffffff !important;
+color: #111111 !important;
+font-size: 11px !important;
+padding: 0 !important;
 }
 
 /* Reset CSS variables for print */
 :root {
-  --dark:    #ffffff;
-  --panel:   #f7f7f7;
-  --card:    #eeeeee;
-  --border:  #cccccc;
-  --gold:    #c47f00;
-  --green:   #1a7a32;
-  --red:     #cc2200;
-  --blue:    #1a5fa8;
-  --text:    #111111;
-  --muted:   #555555;
-  --input-bg:#ffffff;
+–dark:    #ffffff;
+–panel:   #f7f7f7;
+–card:    #eeeeee;
+–border:  #cccccc;
+–gold:    #c47f00;
+–green:   #1a7a32;
+–red:     #cc2200;
+–blue:    #1a5fa8;
+–text:    #111111;
+–muted:   #555555;
+–input-bg:#ffffff;
 }
 
 .header h1 { color: #111111 !important; font-size: 20px !important; }
@@ -338,16 +337,16 @@ body {
 .header::after { background: linear-gradient(90deg, transparent, #c47f00, transparent) !important; }
 
 .section {
-  background: #f7f7f7 !important;
-  border: 1px solid #cccccc !important;
-  border-radius: 4px !important;
-  margin-bottom: 8px !important;
-  page-break-inside: avoid;
+background: #f7f7f7 !important;
+border: 1px solid #cccccc !important;
+border-radius: 4px !important;
+margin-bottom: 8px !important;
+page-break-inside: avoid;
 }
 
 .section-header {
-  background: #eeeeee !important;
-  border-bottom: 1px solid #cccccc !important;
+background: #eeeeee !important;
+border-bottom: 1px solid #cccccc !important;
 }
 .section-header h2 { color: #c47f00 !important; font-size: 11px !important; }
 .section-header .badge { color: #555555 !important; border-color: #cccccc !important; }
@@ -355,31 +354,31 @@ body {
 .field { background: #f7f7f7 !important; padding: 6px 10px !important; }
 .field label { color: #555555 !important; font-size: 8px !important; }
 .field input, .field select, .field textarea {
-  background: #ffffff !important;
-  border: 1px solid #cccccc !important;
-  color: #111111 !important;
-  font-size: 10px !important;
-  padding: 4px 6px !important;
+background: #ffffff !important;
+border: 1px solid #cccccc !important;
+color: #111111 !important;
+font-size: 10px !important;
+padding: 4px 6px !important;
 }
 
 .check-row {
-  padding: 7px 12px !important;
-  border-bottom: 1px solid #dddddd !important;
-  page-break-inside: avoid;
+padding: 7px 12px !important;
+border-bottom: 1px solid #dddddd !important;
+page-break-inside: avoid;
 }
 .check-row:hover { background: transparent !important; }
 .check-row.checked { background: #eafaed !important; }
 
-.check-row input[type="checkbox"] {
-  border: 2px solid #888888 !important;
-  background: #ffffff !important;
-  width: 14px !important;
-  height: 14px !important;
-  min-width: 14px !important;
+.check-row input[type=“checkbox”] {
+border: 2px solid #888888 !important;
+background: #ffffff !important;
+width: 14px !important;
+height: 14px !important;
+min-width: 14px !important;
 }
-.check-row input[type="checkbox"]:checked {
-  background: #1a7a32 !important;
-  border-color: #1a7a32 !important;
+.check-row input[type=“checkbox”]:checked {
+background: #1a7a32 !important;
+border-color: #1a7a32 !important;
 }
 
 .check-label .main { color: #111111 !important; font-size: 11px !important; }
@@ -387,32 +386,32 @@ body {
 .check-num { color: #aaaaaa !important; }
 
 .check-subheader {
-  background: #eeeeee !important;
-  color: #555555 !important;
-  font-size: 9px !important;
-  padding: 5px 12px !important;
+background: #eeeeee !important;
+color: #555555 !important;
+font-size: 9px !important;
+padding: 5px 12px !important;
 }
 
 .info-box {
-  background: #e8f0fa !important;
-  border-color: #a0b8d8 !important;
-  color: #1a5fa8 !important;
-  font-size: 9px !important;
-  margin: 6px 12px !important;
-  padding: 6px 10px !important;
+background: #e8f0fa !important;
+border-color: #a0b8d8 !important;
+color: #1a5fa8 !important;
+font-size: 9px !important;
+margin: 6px 12px !important;
+padding: 6px 10px !important;
 }
 
 .warning-box {
-  background: #faeaea !important;
-  border-color: #e08080 !important;
-  color: #cc2200 !important;
-  font-size: 9px !important;
+background: #faeaea !important;
+border-color: #e08080 !important;
+color: #cc2200 !important;
+font-size: 9px !important;
 }
 
 .score-bar {
-  background: #eeeeee !important;
-  border-top: 1px solid #cccccc !important;
-  padding: 8px 12px !important;
+background: #eeeeee !important;
+border-top: 1px solid #cccccc !important;
+padding: 8px 12px !important;
 }
 .score-display { color: #c47f00 !important; font-size: 16px !important; }
 .grade-rule { color: #555555 !important; font-size: 9px !important; }
@@ -424,11 +423,11 @@ body {
 
 .outcome-row { padding: 8px 12px !important; }
 .outcome-btn {
-  border-color: #cccccc !important;
-  color: #555555 !important;
-  background: #ffffff !important;
-  font-size: 12px !important;
-  padding: 8px !important;
+border-color: #cccccc !important;
+color: #555555 !important;
+background: #ffffff !important;
+font-size: 12px !important;
+padding: 8px !important;
 }
 .outcome-btn.win.active  { background: #eafaed !important; border-color: #1a7a32 !important; color: #1a7a32 !important; }
 .outcome-btn.loss.active { background: #faeaea !important; border-color: #cc2200 !important; color: #cc2200 !important; }
@@ -438,8 +437,6 @@ body {
 
 /* Force page breaks between major sections */
 .section:nth-child(4) { page-break-before: auto; }
-```
-
 }
 </style>
 
@@ -605,13 +602,22 @@ body {
       </div>
       <span class="check-num">01</span>
     </div>
+    <!-- CHANGE 2: PDH/PDL Continuation added directly after PDH/PDL Sweep -->
+    <div class="check-row" onclick="toggleCheck(this)">
+      <input type="checkbox" class="conf-check">
+      <div class="check-label">
+        <div class="main">PDH / PDL Sweep Continuation</div>
+        <div class="note">After sweep reversal confirms, price breaks back through PDH/PDL with momentum — continuation move in progress</div>
+      </div>
+      <span class="check-num">02</span>
+    </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
       <div class="check-label">
         <div class="main">Supply / Demand Zone</div>
         <div class="note">Price at institutional S/D zone — 1st or 2nd test only</div>
       </div>
-      <span class="check-num">22</span>
+      <span class="check-num">03</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -619,7 +625,7 @@ body {
         <div class="main">Channel Wall Confluence</div>
         <div class="note">Price touching channel boundary</div>
       </div>
-      <span class="check-num">23</span>
+      <span class="check-num">04</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -627,7 +633,7 @@ body {
         <div class="main">Fibonacci Level</div>
         <div class="note">0.618 / 0.786 / 0.50 confluence at entry zone</div>
       </div>
-      <span class="check-num">22</span>
+      <span class="check-num">05</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -635,7 +641,7 @@ body {
         <div class="main">MFI Extreme at Sweep</div>
         <div class="note">&gt;75 for short  |  &lt;25 for long — must be AT sweep point</div>
       </div>
-      <span class="check-num">23</span>
+      <span class="check-num">06</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -643,7 +649,7 @@ body {
         <div class="main">OBV Converging with Price</div>
         <div class="note">OBV confirms direction — divergence warns of fake move / reversal</div>
       </div>
-      <span class="check-num">22</span>
+      <span class="check-num">07</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -651,7 +657,7 @@ body {
         <div class="main">ROC Confirmation on 15m</div>
         <div class="note">ROC slope turning in trade direction — not choppy/flat</div>
       </div>
-      <span class="check-num">23</span>
+      <span class="check-num">08</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -659,7 +665,7 @@ body {
         <div class="main">Session Timing</div>
         <div class="note">Primary 10–12  |  Selective 12–2 (A+ only)  |  Asian 8–11pm</div>
       </div>
-      <span class="check-num">22</span>
+      <span class="check-num">09</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -667,7 +673,7 @@ body {
         <div class="main">15m Trend Aligned</div>
         <div class="note">Trading WITH 15m structure — counter-trend = B+ max only</div>
       </div>
-      <span class="check-num">09</span>
+      <span class="check-num">10</span>
     </div>
     <div class="check-row" onclick="toggleCheck(this)">
       <input type="checkbox" class="conf-check">
@@ -675,7 +681,7 @@ body {
         <div class="main">4H Trend Aligned (HTF Confirmation)</div>
         <div class="note">Daily + 4H + 15m all agreeing = maximum conviction A+ setup</div>
       </div>
-      <span class="check-num">10</span>
+      <span class="check-num">11</span>
     </div>
   </div>
 
@@ -685,7 +691,7 @@ body {
 
   <div class="score-bar">
     <div>
-      <div class="score-display"><span>SCORE </span><span id="scoreNum">0</span><span> / 10</span></div>
+      <div class="score-display"><span>SCORE </span><span id="scoreNum">0</span><span> / 11</span></div>
     </div>
     <div class="grade-rule">
       6+ = A+ Full size &nbsp;|&nbsp; 5 = A Standard<br>
@@ -705,6 +711,23 @@ body {
   <div class="checklist">
 
 ```
+<!-- CHANGE 1: News check added at top of Entry Sequence -->
+<div class="check-subheader">▸ News Check</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">No high-impact news within 30 minutes of entry</div>
+    <div class="note">Check Forex Factory — avoid red/orange news events. Wait for spike to settle before entering.</div>
+  </div>
+</div>
+<div class="check-row" onclick="toggleCheck(this)">
+  <input type="checkbox">
+  <div class="check-label">
+    <div class="main">If news just printed — wait for volatility to settle</div>
+    <div class="note">Let spread normalise and candles stabilise — do not trade the initial spike</div>
+  </div>
+</div>
+
 <div class="check-subheader">▸ Higher Timeframe Confirmation</div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -720,7 +743,7 @@ body {
     <div class="main">Daily, 4H and 15m all aligned in same direction</div>
     <div class="note">All three agreeing = highest conviction  |  Any conflict = reduce grade accordingly</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">02</span>
 </div>
 
 <div class="check-subheader">▸ Market Structure</div>
@@ -730,7 +753,7 @@ body {
     <div class="main">Daily: PDH &amp; PDL marked on chart</div>
     <div class="note">Levels drawn before session begins</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">03</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -738,7 +761,7 @@ body {
     <div class="main">15m: Trend direction confirmed</div>
     <div class="note">HH/HL = Bullish  |  LH/LL = Bearish</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">04</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -746,7 +769,7 @@ body {
     <div class="main">Consolidation identified and marked (if present)</div>
     <div class="note">Mark consolidation range top and bottom — watch for sweep of edges</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">05</span>
 </div>
 
 <div class="check-subheader">▸ Sweep Confirmation</div>
@@ -756,7 +779,7 @@ body {
     <div class="main">Price sweeps PDH, PDL or consolidation edge</div>
     <div class="note">Wick pushes through — body closes back inside level</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">06</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -764,7 +787,7 @@ body {
     <div class="main">MFI at extreme on 15m at sweep point</div>
     <div class="note">&gt;75 for short  |  &lt;25 for long — ignore mid-range 40–60 readings</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">07</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -772,7 +795,7 @@ body {
     <div class="main">OBV converging with intended trade direction</div>
     <div class="note">OBV confirms move is real — OBV diverging = fake move / reversal signal</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">08</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -780,7 +803,7 @@ body {
     <div class="main">ROC turning on 15m in trade direction</div>
     <div class="note">Slope shift is real — avoid entries when ROC is choppy or flat</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">09</span>
 </div>
 
 <div class="check-subheader">▸ Entry Trigger</div>
@@ -790,7 +813,7 @@ body {
     <div class="main">5m confirmation at PDH/PDL (if needed)</div>
     <div class="note">Intermediate timeframe confirmation before dropping to 2m</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">10</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -798,7 +821,7 @@ body {
     <div class="main">2m ChoCh confirmed — BODY close required</div>
     <div class="note">Wick alone = invalid. No ChoCh = NO TRADE. This is the trigger.</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">11</span>
 </div>
 
 <div class="check-subheader">▸ BOS / ChoCh Retest (if applicable)</div>
@@ -813,7 +836,7 @@ body {
     <div class="main">Price has pulled back to BOS / ChoCh level</div>
     <div class="note">Broken resistance now acting as support (or vice versa)</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">12</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -821,7 +844,7 @@ body {
     <div class="main">Retest candle shows clean rejection from level</div>
     <div class="note">Wick into level with body closing away — NOT closing back below/above BOS</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">13</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -829,7 +852,7 @@ body {
     <div class="main">Retest volume lower than initial breakout move</div>
     <div class="note">Low volume retest = weak counter-pressure = continuation likely</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">14</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -837,7 +860,7 @@ body {
     <div class="main">2m ChoCh confirms continuation after retest</div>
     <div class="note">Failed retest (closes back through level) = EXIT signal not entry</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">15</span>
 </div>
 
 <div class="check-subheader">▸ BOS Failure / Liquidity Sweep (if applicable)</div>
@@ -852,7 +875,7 @@ body {
     <div class="main">Wick breaks below BOS — body closes back ABOVE</div>
     <div class="note">Body closing below = real breakdown. Body closing back above = liquidity sweep.</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">16</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -860,7 +883,7 @@ body {
     <div class="main">MFI at oversold extreme at the sweep wick low</div>
     <div class="note">&lt;25 confirms exhaustion — smart money absorbing sell pressure</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">17</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -868,7 +891,7 @@ body {
     <div class="main">OBV not confirming the break — flat or rising during wick</div>
     <div class="note">OBV dropping with price = real selling. OBV flat/rising = fake break confirmed</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">18</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -876,7 +899,7 @@ body {
     <div class="main">ROC briefly negative then quickly reverses upward</div>
     <div class="note">Fast ROC reversal = momentum snap back. Sustained negative = real breakdown</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">19</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -884,7 +907,7 @@ body {
     <div class="main">Reversal happens within 1–3 candles of the sweep</div>
     <div class="note">Fast snap back = stop hunt confirmed. Slow drift = breakdown more likely</div>
   </div>
-  <span class="check-num">22</span>
+  <span class="check-num">20</span>
 </div>
 <div class="check-row" onclick="toggleCheck(this)">
   <input type="checkbox">
@@ -892,7 +915,7 @@ body {
     <div class="main">2m ChoCh bullish after body closes back above BOS</div>
     <div class="note">SL goes below the sweep wick — not just the BOS level</div>
   </div>
-  <span class="check-num">23</span>
+  <span class="check-num">21</span>
 </div>
 
 <div class="check-subheader">▸ Risk</div>
@@ -1089,10 +1112,47 @@ body {
   }
 
   function clearState() {
-    if (confirm('Clear all fields and start a new checklist?')) {
-      localStorage.removeItem(SAVE_KEY);
-      location.reload();
-    }
+    if (!confirm('Clear all fields and start a new checklist?')) return;
+
+    // Reset all text/date/time inputs and textareas
+    document.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], textarea').forEach(function(el) {
+      el.value = '';
+    });
+
+    // Reset all selects to first option
+    document.querySelectorAll('select').forEach(function(el) {
+      el.selectedIndex = 0;
+    });
+
+    // Uncheck all checkboxes and remove checked styling
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+      el.checked = false;
+      var row = el.closest('.check-row');
+      if (row) row.classList.remove('checked');
+    });
+
+    // Reset outcome buttons
+    document.querySelectorAll('.outcome-btn').forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+    currentOutcome = '';
+
+    // Reset score and grade display
+    document.getElementById('scoreNum').textContent = '0';
+    var badge = document.getElementById('gradeBadge');
+    badge.className = 'grade-badge';
+    badge.textContent = '—';
+    document.getElementById('counterTrendWarning').classList.remove('visible');
+
+    // Wipe localStorage
+    localStorage.removeItem(SAVE_KEY);
+
+    // Set fresh date/time
+    var now = new Date();
+    var dateEl = document.getElementById('tradeDate');
+    var timeEl = document.getElementById('tradeTime');
+    if (dateEl) dateEl.value = now.toISOString().split('T')[0];
+    if (timeEl) timeEl.value = now.toTimeString().slice(0, 5);
   }
 
   function printChecklist() {
@@ -1103,15 +1163,29 @@ body {
   document.addEventListener('change', saveState);
   document.addEventListener('input', saveState);
 
-  window.addEventListener('load', () => {
-    const loaded = loadState();
+  window.addEventListener('load', function() {
+    var loaded = loadState();
     if (!loaded) {
-      // Fresh checklist — set today's date and time
-      const now = new Date();
+      var now = new Date();
       document.getElementById('tradeDate').value = now.toISOString().split('T')[0];
       document.getElementById('tradeTime').value = now.toTimeString().slice(0,5);
     }
     updateScore();
+
+    // Wire Save PDF button
+    var saveBtn = document.querySelector('.save-btn');
+    if (saveBtn) {
+      saveBtn.removeAttribute('onclick');
+      saveBtn.addEventListener('click', function(e) { e.preventDefault(); window.print(); });
+    }
+
+    // Wire New Checklist button
+    document.querySelectorAll('button').forEach(function(btn) {
+      if (btn.textContent.trim().indexOf('NEW CHECKLIST') !== -1) {
+        btn.removeAttribute('onclick');
+        btn.addEventListener('click', function(e) { e.preventDefault(); clearState(); });
+      }
+    });
   });
 
   function toggleCheck(row) {
@@ -1120,12 +1194,14 @@ body {
     cb.checked = !cb.checked;
     row.classList.toggle('checked', cb.checked);
     updateScore();
+    saveState();
   }
 
   document.querySelectorAll('.check-row input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', function() {
       this.closest('.check-row').classList.toggle('checked', this.checked);
       updateScore();
+      saveState();
     });
   });
 
@@ -1135,7 +1211,8 @@ body {
     checks.forEach(c => { if (c.checked) score++; });
     document.getElementById('scoreNum').textContent = score;
 
-    const trendCheck = document.querySelectorAll('.conf-check')[8]; // 15m trend still index 8
+    // 15m Trend is now index 9 (after adding Continuation at index 1)
+    const trendCheck = document.querySelectorAll('.conf-check')[9];
     const isCounterTrend = !trendCheck.checked;
     document.getElementById('counterTrendWarning').classList.toggle('visible', isCounterTrend && score > 0);
 
@@ -1159,6 +1236,7 @@ body {
     document.querySelectorAll('.outcome-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentOutcome = type;
+    saveState();
   }
 
   function saveChecklist() {
@@ -1168,7 +1246,6 @@ body {
     const filename = `${date}_${pair}_${outcome}.html`;
 
     try {
-      // data URI method — bypasses Chrome local file Blob security block
       const content = document.documentElement.outerHTML;
       const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(content);
       const a = document.createElement('a');
@@ -1178,7 +1255,6 @@ body {
       a.click();
       document.body.removeChild(a);
     } catch(e) {
-      // Fallback — open in new tab, user saves with Ctrl+S
       const content = document.documentElement.outerHTML;
       const win = window.open('', '_blank');
       win.document.write(content);
